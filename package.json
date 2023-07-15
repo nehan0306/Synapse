@@ -1,0 +1,19 @@
+{
+  "name": "synapse",
+  "version": "1.0.0",
+  "description": "Synapse is a platform to connect students from different educational institutions across the country, providing a forum for community discussion on various technical topics.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nehan0306/Synapse.git"
+  },
+  "author": "Neha N, Riya Arora, Mannat Mahajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nehan0306/Synapse/issues"
+  },
+  "homepage": "https://github.com/nehan0306/Synapse#readme"
+}
