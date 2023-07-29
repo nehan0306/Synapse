@@ -51,6 +51,10 @@ app.get('/hirings', (req, res)=>{
     res.render('hirings');
 })
 
+app.get('/Tools', (req, res)=>{
+    res.render('tools');
+})
+
 app.get('/development', (req, res)=>{
     res.render('development_channel');
 })
