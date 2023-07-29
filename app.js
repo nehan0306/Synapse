@@ -71,7 +71,10 @@ io.on('connection', socket =>{
 
     // If someone sends a message, broadcast it to other people
     socket.on('send', message =>{
-        socket.broadcast.emit('receive', {message: message, name: users[socket.id]})
+        // tryin' savin' that message
+        var newMessage = new dmessage({sender : users[socket.id], send_date : new Date(), content : message});
+        newMessage.save();
+        socket.broadcast.emit('receive', {message: message, name: users[socket.id]});
     });
 
     // If someone leaves the chat, let others know 
