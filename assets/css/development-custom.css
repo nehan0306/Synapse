@@ -1,0 +1,32 @@
+.chats-cont{
+    display: flex;
+    height: 87vh;
+    margin-top: 1rem;
+}
+.left-container {
+    width: 25%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #5fd0e4;
+    padding: 10px;
+  }
+
+  .right-container {
+    width: 75%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+
+.stretched-link{
+    color: black !important;
+}
+
+.stretched-link:hover{
+    color: aliceblue !important;
+}
+
+#impo{
+   text-decoration: solid !important;
+}
