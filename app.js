@@ -4,11 +4,28 @@ const app = express();
 
 // Creating Server
 const http = require('http');
+const { default: mongoose } = require('mongoose');
 const server = http.createServer(app);
 
 // Socket Connection for Chatting
 const { Server } = require("socket.io");
 const io = new Server(server);
+
+// MongoDB Connection
+mongoose.connect('mongodb://127.0.0.1:27017/synapse');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error :'));
+db.once('open', function(){
+    console.log("Database synapse connected");
+});
+
+// Message Schema
+const message_schema = new mongoose.Schema({
+    sender : String,
+    send_date : Date,
+    content : String
+});
+const dmessage = mongoose.model('dmessage', message_schema);
 
 // Setting views
 app.set('view engine', 'ejs');
@@ -17,7 +34,7 @@ app.use(express.static(__dirname + '/assets'));
 // Middleware for Form Posting
 app.use(express.urlencoded({extended : true}));
 
-// End-Points
+// END-POINTS
 app.get('/', (req, res)=>{
     res.render('index');
 })

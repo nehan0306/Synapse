@@ -30,3 +30,30 @@
 #impo{
    text-decoration: solid !important;
 }
+
+/* For the chats */
+
+.message{
+  background-color: rgb(211, 204, 204);
+  width: 30%;
+  padding: 7px;
+  margin: 5px 5px;
+  border: 1px solid olivedrab;
+  font-family: 'Montserrat Alternates', sans-serif;;
+  border-radius: 10px;
+}
+.left{
+  float: left;
+  clear:both;
+}
+
+.right{
+  float: right;
+  clear:both;
+}
+
+.center{
+  margin: auto;
+  background-color: grey;
+  color:lightyellow;
+}
