@@ -1,10 +1,46 @@
 var socket = io.connect('http://localhost:3000');
 
+let already_chats = document.getElementById('just-for-data').innerText;
+let cons = JSON.parse(already_chats);
+
+// console.log(cons);
+
+let messageContainer = document.getElementById('list-chats');
+
+const name = prompt("Please enter your preferred name");
+
+cons.forEach(function f(element){
+    const messageElement = document.createElement('li');
+    messageElement.classList.add('d-flex');
+    messageElement.classList.add('justify-content-between');
+    messageElement.classList.add('mb-4');
+    if (element["sender"] == name){
+    messageElement.innerHTML = `<img src="img/profiler.png" alt="avatar"   class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60"> <div class="card mask-custom">    <div class="card-header d-flex justify-content-between p-3" style="border-bottom: 1px solid rgba(255,255,255,.3);">      <p class="fw-bold mb-0"> You </p>   <p class="text-light small mb-0"><i class="far fa-clock"></i> 12 mins ago</p> </div>  <div class="card-body"> <p class="mb-0">  ${element['content']} </p> </div> </div>`;
+    }
+    else {
+        messageElement.innerHTML = `<div class="card mask-custom w-100">
+        <div class="card-header d-flex justify-content-between p-3"
+          style="border-bottom: 1px solid rgba(255,255,255,.3);">
+          <p class="fw-bold mb-0">${element["sender"]}</p>
+          <p class="text-light small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+        </div>
+        <div class="card-body">
+          <p class="mb-0">
+            ${element['content']}
+          </p>
+        </div>
+      </div>
+      <img src="img/profiler.png" alt="avatar"
+        class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">`;
+    }
+    messageContainer.append(messageElement);
+})
+
 // Get DOM elements in respective Js variables
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
 // const messageContainer = document.querySelector(".container")
-const messageContainer = document.getElementById('list-chats');
+// const messageContainer = document.getElementById('list-chats');
 
 // Message Audio
 var audio = new Audio('audio/ting.mp3');
@@ -47,7 +83,7 @@ const append = (usero, message, position)=>{
 }
 
 // Ask new user for his/her name and let the server know
-const name = prompt("Please enter your preferred name");
+
 socket.emit('new-user-joined', name);
 
 // If a new user joins, receive his/her name from the server

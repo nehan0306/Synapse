@@ -26,6 +26,7 @@ const message_schema = new mongoose.Schema({
     content : String
 });
 const dmessage = mongoose.model('dmessage', message_schema);
+// const rmessage = mongoose.model('rmessage', message_schema);
 
 // Setting views
 app.set('view engine', 'ejs');
@@ -51,9 +52,15 @@ app.get('/hirings', (req, res)=>{
     res.render('hirings');
 })
 
-app.get('/development', (req, res)=>{
-    res.render('development_channel');
+app.get('/development', async (req, res)=>{
+    const already_chats = await dmessage.find({});
+    res.render('development_channel', {already : JSON.stringify(already_chats)});
 })
+
+// app.get('/robotics', async (req, res)=>{
+//     const already_rchats = await rmessage.find({});
+//     res.render('robotics-channel', {already : JSON.stringify(already_rchats)});
+// })
 
 app.get('/robotics', (req, res)=>{
     res.render('robotics-channel');
