@@ -52,6 +52,10 @@ app.get('/hirings', (req, res)=>{
     res.render('hirings');
 })
 
+app.get('/Tools', (req, res)=>{
+    res.render('tools');
+})
+
 app.get('/development', async (req, res)=>{
     const already_chats = await dmessage.find({});
     res.render('development_channel', {already : JSON.stringify(already_chats)});
